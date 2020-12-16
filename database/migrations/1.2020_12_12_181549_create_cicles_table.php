@@ -8,7 +8,7 @@ class CreateCiclesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     *prueba 
      * @return void
      */
     public function up()
@@ -17,7 +17,7 @@ class CreateCiclesTable extends Migration
             $table->engine='InnoDB';
             $table->increments('id');
             $table->string('name');
-            $table->string('img');
+            $table->string('img'); 
             $table->timestamps();
         });
     }
