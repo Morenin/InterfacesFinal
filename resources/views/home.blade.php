@@ -96,7 +96,7 @@
 			<ul class="mainnav">
 			
 				<li>
-                <a href="TrabajoBackEnd">
+                <a href={{url('/')}}>
 						<i class="icon-dashboard"></i>
 						<span>Dashboard</span>
 					</a>	    				
@@ -114,7 +114,7 @@
 				<li>					
 					<a href="guidely.html">
 						<i class="icon-facetime-video"></i>
-						<span>App Tour</span>
+						<span>Email</span>
 					</a>  									
 				</li>
                 
@@ -122,7 +122,7 @@
                 <li>					
 					<a href="charts.html">
 						<i class="icon-bar-chart"></i>
-						<span>Charts</span>
+						<span>Crear Pdf</span>
 					</a>  									
 				</li>
 				
