@@ -40,7 +40,7 @@
 			</a>
 			
 			<a class="brand" href="index.html">
-				Bootstrap Admin Template				
+				Gestion De Ofertas de Empleo				
 			</a>		
 			
 			<div class="nav-collapse">
@@ -112,7 +112,7 @@
 				</li>
 				
 				<li>					
-					<a href="guidely.html">
+					<a href=>
 						<i class="icon-facetime-video"></i>
 						<span>Email</span>
 					</a>  									
@@ -120,7 +120,7 @@
                 
                 
                 <li>					
-					<a href="charts.html">
+					<a href=>
 						<i class="icon-bar-chart"></i>
 						<span>Crear Pdf</span>
 					</a>  									
