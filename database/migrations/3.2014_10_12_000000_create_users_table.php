@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->foreign('cicle_id')->references('id')->on('cicles');
             $table->boolean('actived')->default(false);
             $table->string('email')->unique();
-            $table->date('email_verified_at');
+            $table->date('email_verified_at')->nullable();
             $table->string('password');
             $table->text('type');
             $table->integer('num_offer_applied');

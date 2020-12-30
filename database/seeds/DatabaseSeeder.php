@@ -11,14 +11,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('Users')->insert([
-        //     'name' => 'admin',
-        //     'surname' => 'global',
-        //     'actived' => 'true',
-        //     'email' => 'admin@admin.com',
-        //     'password' => bcrypt('123456'),
-        //     'type' => 'ad',
-        // ]);
+        DB::table('cicles')->insert([
+            'id' => '0',
+            'name' => 'admin',
+            'img' => 'admin'
+        ]);
+        DB::table('Users')->insert([
+            'name' => 'admin',
+            'surname' => 'global',
+            'cicle_id'=> '1',
+            'actived' => true,
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('123456'),
+            'type' => 'ad',
+            'num_offer_applied'=> '0'
+        ]);
         factory(\App\cicle::class, 20)->create();
         factory(\App\offer::class, 20)->create();
         factory(\App\User::class, 100)->create();
