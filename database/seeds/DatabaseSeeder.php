@@ -11,6 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // DB::table('Users')->insert([
+        //     'name' => 'admin',
+        //     'surname' => 'global',
+        //     'actived' => 'true',
+        //     'email' => 'admin@admin.com',
+        //     'password' => bcrypt('123456'),
+        //     'type' => 'ad',
+        // ]);
         factory(\App\cicle::class, 20)->create();
         factory(\App\offer::class, 20)->create();
         factory(\App\User::class, 100)->create();
