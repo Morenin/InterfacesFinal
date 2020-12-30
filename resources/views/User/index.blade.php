@@ -7,6 +7,11 @@
         </div>
     </div>
     <br></br>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
     <table class="table table-bordered container">
         <tr>
           <th>Nombre</th>
@@ -19,7 +24,7 @@
         </tr>
     @foreach ($Users as $User)
     <tr>
-        
+        @if($User -> actived == false)
           <td>{{$User -> name }}</td>
           <td>{{$User -> surname }}</td>
           <td>{{$User -> cicle_id}}</td>
@@ -31,7 +36,7 @@
             <a class="btn btn-primary" href="{{ route('User.edit',$User->id) }}">Aceptar</a>
             
         </td>
-        
+        @endif
     </tr>
     @endforeach
     </table>

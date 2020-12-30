@@ -58,7 +58,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id); 
+        $user->actived = true;
+        $user->update();
+        return redirect()->route('User.index')->with('success','Registro activado correctamente');
     }
 
     /**
