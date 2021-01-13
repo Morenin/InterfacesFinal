@@ -38,11 +38,6 @@
 		
 		<div class="container">
 			
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
 			
 			<a class="brand" href="index.html">
 				Gestion De Ofertas de Empleo				
@@ -57,21 +52,30 @@
 							<b class="caret"></b>
 						</a>
 						
-						<ul class="dropdown-menu">
+						<!-- <ul class="dropdown-menu">
 							<li><a href="javascript:;">Opciones</a></li>
-						</ul>						
+						</ul>						 -->
 					</li>
 			
 					<li class="dropdown">						
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<i class="icon-user"></i> 
-							EGrappler.com
-							<b class="caret"></b>
-						</a>
-						
-						<ul class="dropdown-menu">
-							<li><a href="{{ route('login') }}">Salir</a></li>
-						</ul>						
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Salir
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+												
 					</li>
 				</ul>
 			
@@ -100,7 +104,7 @@
 			<ul class="mainnav">
 			
 				<li>
-                <a href={{url('/')}}>
+                <a href={{url('/home')}}>
 						<i class="icon-dashboard"></i>
 						<span>Dashboard</span>
 					</a>	    				

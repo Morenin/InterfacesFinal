@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <title>Login</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
     <meta name="apple-mobile-web-app-capable" content="yes"> 
     
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -15,7 +15,16 @@
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/pages/signin.css" rel="stylesheet" type="text/css">
 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 
 <body>
 	
@@ -25,11 +34,11 @@
 		
 		<div class="container">
 			
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			<!-- <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
-			</a>
+			</a> -->
 			
 			<a class="brand" href="index.html">
 				Administrar BakcEnd				
@@ -50,45 +59,71 @@
 
 
 
-<div class="account-container">
-	
-	<div class="content clearfix">
-		
-		<form action="{{route('login')}}" method="post">
-			
-			<h1>Login Administrador</h1>		
-			
-			<div class="login-fields">
-				
-				
-				
-				<div class="field">
-					<label for="username">Nombre</label>
-					<input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
-				</div> 
-				
-				<div class="field">
-					<label for="password">Contraseña:</label>
-					<input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field"/>
-				</div> <!-- /password -->
-				
-			</div> <!-- /login-fields -->
-			
-			<div class="login-actions">
-		
-				<div class="col-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">{{ __('Login') }}</button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Login</div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
+
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Forgot Your Password?
+                                </a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-				
-			</div> <!-- .actions -->
-			
-			
-			
-		</form>
-		
-	</div> <!-- /content -->
-	
-</div> <!-- /account-container -->
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

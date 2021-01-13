@@ -1,10 +1,10 @@
 @extends('home')
 @section('content')
  <!-- Theme style -->
-  <link rel="stylesheet" href="http://localhost/trabajo/public/adminlte/css/adminlte.min.css">
+  <link rel="stylesheet" href="../public/adminlte/css/adminlte.min.css">
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
+    <div class="wrapper">
+        <div class="col-md-10">
             <div class="well well-sm">
                 <div align="center">
                 <form class="form-horizontal" method="POST" action="{{route('email.store')}}" accept-charset="UTF-8"  enctype="multipart/form-data">

@@ -13,17 +13,17 @@
 // Route::get('/', function() {
 //     return redirect(route('login'));
 // });
-Route::get('/', function() {
-    return view('welcome');
+Route::get('/', function () {
+    // return view('welcome');
+    return view('auth.login');
 });
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Auth::routes(['verify' => false, 'reset' => false]);
+Auth::routes();
 // Route::middleware('auth')->group(function() {
 //     Route::get('/welcome', 'HomeController@index')->name('welcome');
 // });
-Auth::routes(['verify' => false, 'reset' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
