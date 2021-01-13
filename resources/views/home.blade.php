@@ -17,6 +17,11 @@
     <link href="css/style.css" rel="stylesheet">
     
     <link href="css/pages/reports.css" rel="stylesheet">
+	  <!-- Font Awesome -->
+	  <link rel="stylesheet" href="http://localhost/trabajo/public/adminlte/plugins/fontawesome-free/css/all.min.css">
+
+	 
+
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -112,7 +117,7 @@
 				</li>
 				
 				<li>					
-					<a href=>
+					<a href="{{route('email.index')}}" class="nav-link">
 						<i class="icon-facetime-video"></i>
 						<span>Email</span>
 					</a>  									
