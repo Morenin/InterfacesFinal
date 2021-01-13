@@ -1,7 +1,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Login - Bootstrap Admin Template</title>
+    <title>Login</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
@@ -54,8 +54,8 @@
 	
 	<div class="content clearfix">
 		
-		<form action="#" method="post">
-		
+		<form action="{{route('login')}}" method="post">
+			
 			<h1>Login Administrador</h1>		
 			
 			<div class="login-fields">
@@ -76,7 +76,9 @@
 			
 			<div class="login-actions">
 		
-				<button class="button btn btn-success btn-large">Entrar</button>
+				<div class="col-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">{{ __('Login') }}</button>
+                </div>
 				
 			</div> <!-- .actions -->
 			

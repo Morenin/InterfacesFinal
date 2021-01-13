@@ -19,6 +19,7 @@ Route::get('/', function() {
 Route::get('/welcome', function () {
     return view('welcome');
 });
+Auth::routes(['verify' => false, 'reset' => false]);
 // Route::middleware('auth')->group(function() {
 //     Route::get('/welcome', 'HomeController@index')->name('welcome');
 // });

@@ -70,8 +70,7 @@
 						</a>
 						
 						<ul class="dropdown-menu">
-							<li><a href="javascript:;">Perfil</a></li>
-							<li><a href="javascript:;">Salir</a></li>
+							<li><a href="{{ route('login') }}">Salir</a></li>
 						</ul>						
 					</li>
 				</ul>
