@@ -14,7 +14,7 @@
 //     return redirect(route('login'));
 // });
 Route::get('/', function () {
-    // return view('welcome');
+    //return view('welcome');
     return view('auth.login');
 });
 Route::get('/welcome', function () {
