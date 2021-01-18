@@ -32,3 +32,7 @@ Route::resource('User','UserController');
 Route::resource('PDF','pdfController');
 
 Route::resource('email','emailController');
+
+Route::get('/copia',function(){
+    return view('copia.welcome');
+})->name('copia');

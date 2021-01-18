@@ -33,7 +33,7 @@
 <body>
 
 <div class="navbar navbar-fixed-top">
-	
+<div class="col-12">
 	<div class="navbar-inner">
 		
 		<div class="container">
@@ -87,7 +87,9 @@
 	
 		</div> <!-- /container -->
 		
+		
 	</div> <!-- /navbar-inner -->
+	</div>
 	
 </div> <!-- /navbar -->
     
@@ -132,8 +134,7 @@
 						<i class="icon-bar-chart"></i>
 						<span>Crear Pdf</span>
 					</a>
-						<ul class="dropdown-menu" role="menu"
->
+						<ul class="dropdown-menu" role="menu">
 							<li>
 								<a href="{{ route('PDF.index') }}">Alumnos</a>
 							</li>
@@ -165,4 +166,46 @@
 
 </body>
 
+<!-- jQuery -->
+<script src="../public/adminlte/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../public/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../public/adminlte/js/adminlte.min.js"></script>
+
+<!-- bs-custom-file-input -->
+<script src="../public/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> 
+<!-- DataTables -->
+<script src="../public/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../public/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../public/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../public/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="../public/adminlte/js/demo.js"></script>
+<script type="text/javascript">
+</script>
+<!-- page script -->
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    });
+  </script>
 </html>

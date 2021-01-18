@@ -1,8 +1,19 @@
 @extends('home')
 @section('content')
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../public/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../public/adminlte/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../public/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../public/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <div class="container">
     <div class="wrapper">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="well well-sm">
                 <div align="center">
                 <form class="form-horizontal" method="POST" action="{{route('email.store')}}" accept-charset="UTF-8"  enctype="multipart/form-data">
@@ -50,4 +61,8 @@
         </div>
     </div>
 </div>
+<!-- REQUIRED SCRIPTS -->
+
+
+
 @endsection
