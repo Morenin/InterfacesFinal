@@ -1,7 +1,5 @@
 @extends('home')
 @section('content')
- <!-- Theme style -->
-  <link rel="stylesheet" href="../public/adminlte/css/adminlte.min.css">
 <div class="container">
     <div class="wrapper">
         <div class="col-md-10">

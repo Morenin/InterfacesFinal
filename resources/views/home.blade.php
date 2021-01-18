@@ -18,7 +18,7 @@
     
     <link href="css/pages/reports.css" rel="stylesheet">
 	  <!-- Font Awesome -->
-	  <link rel="stylesheet" href="http://localhost/trabajo/public/adminlte/plugins/fontawesome-free/css/all.min.css">
+	  <link rel="stylesheet" href="../public/adminlte/plugins/fontawesome-free/css/all.min.css">
 
 	 
 
@@ -58,23 +58,23 @@
 					</li>
 			
 					<li class="dropdown">						
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+										{{ Auth::user()->name }} <span class="caret"></span>
+						</a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Salir
-                                        </a>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<a href="{{ route('logout') }}"
+									onclick="event.preventDefault();
+											document.getElementById('logout-form').submit();">
+									Salir
+								</a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									{{ csrf_field() }}
+								</form>
+							</li>
+						</ul>
 												
 					</li>
 				</ul>
@@ -112,7 +112,7 @@
 				
 				
 				
-				<li class="active">
+				<li>
                     <a href="{{route('usuario')}}" class="nav-link">
 						<i class="icon-list-alt"></i>
 						<span>Usuarios</span>
@@ -127,11 +127,21 @@
 				</li>
                 
                 
-                <li>					
-					<a href=>
+                <li class="dropdown">					
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 						<i class="icon-bar-chart"></i>
 						<span>Crear Pdf</span>
-					</a>  									
+					</a>
+						<ul class="dropdown-menu" role="menu"
+>
+							<li>
+								<a href="{{ route('PDF.index') }}">Alumnos</a>
+							</li>
+							<li>
+								<a href="">Ofertas</a>
+							</li>
+						</ul>
+														
 				</li>
 				
 				

@@ -29,5 +29,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/Usuario', 'UserController@index')->name('usuario');
 Route::resource('User','UserController');
+Route::resource('PDF','pdfController');
 
 Route::resource('email','emailController');
