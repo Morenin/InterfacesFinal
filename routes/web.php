@@ -14,7 +14,7 @@
 //     return redirect(route('login'));
 // });
 Route::get('/', function () {
-    // return view('welcome');
+    //return view('welcome');
     return view('auth.login');
 });
 Route::get('/welcome', function () {
@@ -26,7 +26,6 @@ Auth::routes();
 // });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/Usuario', 'UserController@index')->name('usuario');
 Route::resource('User','UserController');
 Route::resource('PDF','pdfController');
