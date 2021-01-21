@@ -16,9 +16,9 @@ class UserController extends Controller
     {
         $active = $request->get('active');
         if($active!=""){
-        $Users = User::where('actived','=',"$active")->paginate(100);
+        $Users = User::where('actived','=',"$active")->paginate(20);
         }else{
-        $Users = User::all();
+        $Users = User::paginate(20);
         }
         return view('User.index',compact('Users'));
     }
@@ -93,8 +93,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function desactivar($id){
-        
     }
 }

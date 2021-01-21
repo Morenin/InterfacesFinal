@@ -33,16 +33,16 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
-        <nav class="navbar navbar-light float-right">
-            <form class="form-inline">
+        
+            <form class="form-inline m-2">
                 <select name='active' placeholder="Buscar por nombre">
                 <option value="">Todos</option>
                 <option value=1>Para desactivar</option>
                 <option value=0>Para activar</option>
                 </select>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                <button class="btn btn-outline-success my-2 my-sm-0 m-3" type="submit">Buscar</button>
             </form>
-        </nav>
+        
         <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid"
             aria-describedby="example1_info">
             <thead>
@@ -81,6 +81,7 @@
             </tbody>
 
         </table>
+        {{ $Users->links() }}
         <div class="card-footer"></div>
     </div>
     @endsection
