@@ -26,7 +26,7 @@ Auth::routes();
 // });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('UserController@desactivar')->name('desactivar');
 Route::get('/Usuario', 'UserController@index')->name('usuario');
 Route::resource('User','UserController');
 Route::resource('PDF','pdfController');

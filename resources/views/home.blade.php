@@ -176,33 +176,13 @@
 <!-- bs-custom-file-input -->
 <script src="../public/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> 
 <!-- DataTables -->
-<script src="../public/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../public/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../public/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../public/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
 <!-- AdminLTE for demo purposes -->
 <script src="../public/adminlte/js/demo.js"></script>
 <script type="text/javascript">
 </script>
 <!-- page script -->
-<script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true,
-        "autoWidth": false,
-      });
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-    });
-  </script>
+
   <script>
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
