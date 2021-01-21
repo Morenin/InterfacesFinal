@@ -106,7 +106,7 @@
 			<ul class="mainnav">
 			
 				<li>
-                <a href={{url('/home')}}>
+                <a href="{{route('home')}}" class="nav-link">
 						<i class="icon-dashboard"></i>
 						<span>Dashboard</span>
 					</a>	    				
@@ -136,10 +136,11 @@
 					</a>
 						<ul class="dropdown-menu" role="menu">
 							<li>
-								<a href="{{ route('PDF.index') }}">Alumnos</a>
+								<a href="{{ route('pdfAlumnos') }}">Alumnos</a>
 							</li>
+							
 							<li>
-								<a href="">Ofertas</a>
+								<a href="{{route('PDF.index')}}">Ofertas</a>
 							</li>
 						</ul>
 														
@@ -166,6 +167,7 @@
 
 </body>
 
+
 <!-- jQuery -->
 <script src="../public/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -184,28 +186,5 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../public/adminlte/js/demo.js"></script>
 <script type="text/javascript">
-</script>
-<!-- page script -->
-<script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true,
-        "autoWidth": false,
-      });
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-    });
-  </script>
-  <script>
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    });
-  </script>
+
 </html>

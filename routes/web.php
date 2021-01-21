@@ -30,9 +30,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/Usuario', 'UserController@index')->name('usuario');
 Route::resource('User','UserController');
 Route::resource('PDF','pdfController');
-
+Route::get('/pdfAlumnos','pdfController@index2')->name('pdfAlumnos');
+Route::get('/CrearPdf','pdfController@store2')->name('CrearPdf');
 Route::resource('email','emailController');
-
-Route::get('/copia',function(){
-    return view('copia.welcome');
-})->name('copia');
