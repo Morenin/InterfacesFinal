@@ -30,5 +30,7 @@ Route::get('/Usuario', 'UserController@index')->name('usuario');
 Route::resource('User','UserController');
 Route::resource('PDF','pdfController');
 Route::get('/pdfAlumnos','pdfController@index2')->name('pdfAlumnos');
-Route::get('/CrearPdf','pdfController@store2')->name('CrearPdf');
+Route::post('/CrearPdf','pdfController@store2')->name('CrearPdf');
 Route::resource('email','emailController');
+Route::get('/ciclo/{id}/ofertas', 'pdfController@byCiclo');
+Route::get('/usuarios/{id}/tipo', 'UserController@byTipo');

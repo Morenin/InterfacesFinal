@@ -138,7 +138,6 @@
 							<li>
 								<a href="{{ route('pdfAlumnos') }}">Alumnos</a>
 							</li>
-							
 							<li>
 								<a href="{{route('PDF.index')}}">Ofertas</a>
 							</li>
@@ -174,11 +173,8 @@
 <script src="../public/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../public/adminlte/js/adminlte.min.js"></script>
-
 <!-- bs-custom-file-input -->
 <script src="../public/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> 
-<!-- DataTables -->
-
 <!-- AdminLTE for demo purposes -->
 <script src="../public/adminlte/js/demo.js"></script>
 <script type="text/javascript">

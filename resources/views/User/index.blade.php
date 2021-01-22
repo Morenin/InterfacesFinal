@@ -84,4 +84,5 @@
         {{ $Users->links() }}
         <div class="card-footer"></div>
     </div>
+    </script>
     @endsection

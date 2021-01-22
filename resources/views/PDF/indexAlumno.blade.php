@@ -15,21 +15,30 @@
     <div class="wrapper">
         <div class="col-md-12">
             <div class="well well-sm">
-                <div align="center">
-                <form class="form-horizontal" method="POST" action="{{route('email.store')}}" accept-charset="UTF-8">
+                <div class="text-center">
+                <form class="form-horizontal" method="POST" action="{{route('CrearPdf')}}" accept-charset="UTF-8">
                 {{ csrf_field() }}
                         <legend class="text-center header">Crear PDF de los alumnos</legend>
 
                         <div class="form-group">
-								<label for="ciclo">Ciclo</label>
-								<div class="form-group">
-								<select name="ciclo" class="form-control select2" style="width: 100%;">
+                            <label for="ciclo">Ciclo</label>
+                            <div class="form-group">
+                                <select name="ciclo" class="form-control" id="select-ciclo" style="width: 100%;">
+                                <option value="">Seleccione un Ciclo</option>
                                     @foreach($ciclos as $ciclo)
-                                        <option>{{ $ciclo->name }}</option>
+                                        <option value="{{ $ciclo->id}}">{{ $ciclo->name }}</option>
                                     @endforeach
-								</select>
-								</div>
-							</div>
+                                </select>
+                            </div>
+						</div>
+                        <div class="form-group">
+                            <label for="ofertas">ofertas</label>
+                            <div class="form-group">
+                                <select name="ofertas" class="form-control" id="select-oferta" style="width: 100%;">
+                                <option value="">Seleccione un ciclo primero</option>
+                                </select>
+                            </div>
+						</div>
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
@@ -43,7 +52,27 @@
     </div>
 </div>
 <!-- REQUIRED SCRIPTS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function(){
 
+    $('#select-ciclo').on('change', onSelectCiclo)
+})
 
+function onSelectCiclo(){
+    var cicle_id= $(this).val();
+    if(!cicle_id){
+        $('#select-oferta').html('<option value="">Seleccione primero un ciclo</option>');
+    }
+    // AJAX
+    $.get('ciclo/'+cicle_id+'/ofertas', function(data) {
+        var html_select='<option value="">Seleccione Oferta</option>';
+        alert(data.length);
+        for(var i=0; i<data.length; ++i)
+            html_select+='<option value="'+data[i].id+'">'+data[i].headline+'</option>';
+        $('#select-oferta').html(html_select);
+    });
+}
+</script>
 
 @endsection

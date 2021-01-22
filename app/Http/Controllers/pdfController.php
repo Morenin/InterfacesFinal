@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\cicle;
 use PDF;
 use App\offer;
+use App\applied;
 
 class pdfController extends Controller
 {
@@ -57,8 +58,15 @@ class pdfController extends Controller
      */
     public function store2(Request $request)
     {
-        $pdf=PDF::loadView('PDF.ofertas');
-        return $pdf->download('Ofertas.pdf');
+        $offer_id=request()->ofertas;
+        $applieds = applied::where('offer_id', $offer_id)->get();
+        $pdf=PDF::loadView('PDF.alumnos', compact('applieds'));
+        return $pdf->download('Alumnos.pdf');
+    }
+
+    public function byCiclo($id){
+        $ofertas=offer::where('cicle_id',$id)->get();
+        return $ofertas;
     }
 
 }
