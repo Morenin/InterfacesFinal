@@ -185,9 +185,4 @@
 </script>
 <!-- page script -->
 
-  <script>
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    });
-  </script>
 </html>
