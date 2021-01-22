@@ -19,9 +19,7 @@ class RegisterController extends Controller
         'cicle_id'=> 'required',
         'email' => 'required|email',
         'password' => 'required',
-        'type' => 'required',
         'num_offer_applied'=>'required',
-        'actived' => 'required',
         
 
 
