@@ -4,9 +4,11 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\article;
 
 class ArticleController extends Controller
 {
+    public $successStatus = 200;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles=article::all();
+        return response()->json(['Articulos'=>$articles->toArray()],$this->successStatus);
     }
 
     /**

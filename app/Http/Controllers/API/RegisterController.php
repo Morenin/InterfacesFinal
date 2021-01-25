@@ -21,7 +21,7 @@ class RegisterController extends Controller
         'password' => 'required',
         'type' => 'required',
         'num_offer_applied'=>'required',
-        'actived' => 'required',
+        'actived' => '0',
         
 
 
@@ -37,5 +37,21 @@ class RegisterController extends Controller
         $success['token'] = $user->createToken('MyApp')->accessToken;
         $success['name'] = $user->name;
         return response()->json(['success' => $success], $this->successStatus);
+
+        
     }
+    public function login() {
+        // Si las credenciales son correctas
+        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
+        $user = Auth::user();
+        // Creamos un token de acceso para ese usuario
+        $success['token'] = $user->createToken('MyApp')->accessToken;
+        // Y lo devolvemos en el objeto 'json'
+        return response()->json(['success' => $success], $this->successStatus);
+        }
+        else {
+        return response()->json(['error' => 'No estás autorizado'], 401);
+        }
+       }
+       
 }
