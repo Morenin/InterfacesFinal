@@ -14,8 +14,12 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $actived= $request->get('validar');
-        $Users= User::where('actived','=',$actived)->paginate(20);
+        $active = $request->get('active');
+        if($active!=""){
+        $Users = User::where('actived','=',"$active")->paginate(20);
+        }else{
+        $Users = User::paginate(20);
+        }
         return view('User.index',compact('Users'));
     }
 
@@ -51,7 +55,7 @@ class UserController extends Controller
         $user = User::find($id); 
         $user->actived = false;
         $user->update();
-        return redirect()->route('User.index')->with('success','Registro desactivado correctamente');
+        return redirect()->route('User.index')->with('success','Registro Desactivado correctamente');
     }
 
     /**
