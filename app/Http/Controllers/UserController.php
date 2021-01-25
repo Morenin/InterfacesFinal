@@ -12,9 +12,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $Users = User::all();
+        $actived= $request->get('validar');
+        $Users= User::where('actived','=',$actived)->paginate(20);
         return view('User.index',compact('Users'));
     }
 
@@ -47,7 +48,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id); 
+        $user->actived = false;
+        $user->update();
+        return redirect()->route('User.index')->with('success','Registro desactivado correctamente');
     }
 
     /**
@@ -73,7 +77,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
     }
 
     /**
@@ -84,6 +88,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

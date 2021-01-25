@@ -21,6 +21,18 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+    <div class="panel-body">
+        <form class="navbar-form navbar-left pull-right" role="search" method= 'GET'>
+        <div class="form-group">
+            <select name="active" class="form-control">
+                <option value="">Todos</option>
+                <option value=0>Activar</option>
+                <option value=1>Desactivado</option>
+            </select>
+        </div>
+        <button type="submit" href="{{ route('User.index','active') }}" class=btn btn-default>Buscar</button>
+        </form>
+    </div>
     <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid"  aria-describedby="example1_info">
         <thead>
         <tr role="row">
@@ -34,25 +46,34 @@
         </tr>
         </thead>
         <tbody>
+    <!-- @if (is_array($Users) || is_object($Users)) -->
     @foreach ($Users as $User)
     <tr role="row" class="odd">
-        @if($User -> actived == false)
+            @if($User->name != 'admin')
           <td class="sorting_1" tabindex="0">{{$User -> name }}</td>
           <td>{{$User -> surname }}</td>
           <td>{{$User -> cicle_id}}</td>
           <td>{{$User -> email}}</td>
           <td>{{$User -> type}}</td>
           <td>{{$User -> num_offer_applied}}</td>
+           
+            @if($User -> actived == false)
         <td>
             
-            <a class="btn btn-primary" href="{{ route('User.edit',$User->id) }}">Aceptar</a>
+            <a class="btn btn-primary" href="{{ route('User.edit',$User->id) }}">Activar</a>
             
         </td>
-        @endif
+            @elseif($User -> actived == true)
+        <td>
+            <a class="btn btn-primary" style="background-color: red "href="{{ route('User.show',$User->id) }}">Desactivar</a>
+        </td>
+            @endif
+            @endif
     </tr>
     @endforeach
+    @endif   
     </tbody>
-    <tfoot>
+    <!-- <tfoot>
         <th rowspan="1" colspan="1">Nombre</th>
         <th rowspan="1" colspan="1">Apellido</th>
         <th rowspan="1" colspan="1">Id-Ciclo</th>
@@ -62,6 +83,6 @@
         <th rowspan="1" colspan="1">Validar</th>
     </tfoot>
     </table>
-    <div class="card-footer"></div>
+    <div class="card-footer"></div> -->
 </div>
 @endsection
