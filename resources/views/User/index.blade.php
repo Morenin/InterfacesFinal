@@ -26,14 +26,24 @@
         @endif
         
             <form class="form-inline m-2">
-                <select name='active' placeholder="Buscar por nombre">
+                <select id= 'active' name='active' class='form-control'placeholder="Buscar por nombre">
                 <option value="">Todos</option>
                 <option value=1>Para desactivar</option>
                 <option value=0>Para activar</option>
                 </select>
                 <button class="btn btn-outline-success my-2 my-sm-0 m-3" type="submit">Buscar</button>
             </form>
-        
+            <!-- <label for="select-active">Estado</label>
+            <form class="form-inline m-2">
+            <select id="select-active" name="active" class="browser-default custom-select">
+                <option value="">Todos</option>
+                <option value=1 >Para desactivar</option>
+                <option value=0>Para activar</option>
+            </select>
+            </form>
+            @section('script')
+            <script src="{{asset('/public/js/user.js')}}"></script>
+            @endsection -->
         <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid"
             aria-describedby="example1_info">
             <thead>
