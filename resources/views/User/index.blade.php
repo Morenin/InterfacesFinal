@@ -82,7 +82,7 @@
             </tbody>
 
         </table>
-        {{ $Users->links() }}
+        {{ $Users->links('vendor.pagination.semantic-ui') }}
         <div class="card-footer"></div>
     </div>
     @endsection
