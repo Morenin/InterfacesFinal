@@ -12,15 +12,20 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $active = $request->get('active');
-        if($active!=""){
-        $Users = User::where('actived','=',"$active")->paginate(20);
+        $Users = User::paginate(20);
+        
+        return view('User.index',compact('Users'));
+    }
+    public function filtro($id)
+    {
+        if($id!=""){
+        $Users = User::where('actived',$id)->paginate(20);
         }else{
         $Users = User::paginate(20);
         }
-        return view('User.index',compact('Users'));
+        return view('User.index',compact('Users'));   
     }
 
     /**

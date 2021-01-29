@@ -33,4 +33,4 @@ Route::get('/pdfAlumnos','pdfController@index2')->name('pdfAlumnos');
 Route::post('/CrearPdf','pdfController@store2')->name('CrearPdf');
 Route::resource('email','emailController');
 Route::get('/ciclo/{id}/ofertas', 'pdfController@byCiclo');
-Route::get('/usuarios/{id}/tipo', 'UserController@byTipo');
+Route::get('/usuarios/{id}', 'UserController@filtro');

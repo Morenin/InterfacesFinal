@@ -36,25 +36,41 @@ class emailController extends Controller
     public function store(Request $request)
     {
         $correos=request()->email;
-        $pos= strpos($correos,';');
-        if ( $pos === false){
-            $CFinal=$correos;
+        if(strpos($correos,',') || strpos($correos,':')){
+            return back()->with('message',__("El caracter para separar los correos es ';', por favor asegurese de que ha introducido el correcto"));
+        }else{
+            $pos= strpos($correos,';');
+            if ( $pos === false ){
+                if(self::check_email_address($correos)){
+                    $CFinal=$correos;
+                }else{
+                    return back()->with('message',__("El correo introducido no es valido"));
+                }
+                
+            }
+            else{
+                $CFinal=explode(";", $correos);
+                if(!self::check_all_address($CFinal)){
+                    return back()->with('message',__("Algun correo introducido no es valido"));
+                }
+                
+            }
+            $data=[
+                'emailto'=>$CFinal,
+                'subject'=>request()->asunto,
+                'content'=>request()->mensaje
+            ];
+            
+            Mail::send('email.vistaEmail', $data, function ($message) use($data) {
+                $message->from('micorreo@gmail.com');
+                $message->to($data['emailto'])->subject($data['subject']);
+                if(!request()->file==null){
+    
+                    $message->attach(request()->file('file')->getRealPath(), ['as'=> request()->file('file')->getClientOriginalName(), 'mime'=>request()->file('file')->getMimeType()]);
+                }
+            });
+            return back()->with('success',__("Correo enviado"));
         }
-        else{
-            $CFinal=explode(";", $correos);
-        }
-        $data=[
-            'emailto'=>$CFinal,
-            'subject'=>request()->asunto,
-            'content'=>request()->mensaje
-        ];
-        
-        Mail::send('email.vistaEmail', $data, function ($message) use($data) {
-            $message->from('micorreo@gmail.com');
-            $message->to($data['emailto'])->subject($data['subject']);
-            $message->attach(request()->file('file')->getRealPath(), ['as'=> request()->file('file')->getClientOriginalName(), 'mime'=>request()->file('file')->getMimeType()]);
-        });
-        return back();
 
         
     }
@@ -102,5 +118,25 @@ class emailController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function check_all_address($emails)
+    {
+        $cont=0;
+        foreach($emails as $email){
+            if(self::check_email_address($email)){
+                $cont+=1;
+            }
+        }
+        if($cont==sizeof($emails)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function check_email_address($email) 
+    {
+        return filter_var($email,FILTER_VALIDATE_EMAIL);
     }
 }

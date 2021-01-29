@@ -47,7 +47,6 @@ class pdfController extends Controller
         $ciclos = cicle::all();
         $pdf=PDF::loadView('PDF.ofertas',compact('ciclos','ofertas'));
         return $pdf->download('Ofertas.pdf');
-        // $snappy->generateFromHtml($html, 'Ofertas.pdf');
     }
 
     /**
@@ -58,10 +57,19 @@ class pdfController extends Controller
      */
     public function store2(Request $request)
     {
-        $offer_id=request()->ofertas;
-        $applieds = applied::where('offer_id', $offer_id)->get();
-        $pdf=PDF::loadView('PDF.alumnos', compact('applieds'));
-        return $pdf->download('Alumnos.pdf');
+        if(request()->ciclo==null){
+            return back()->with('message', __("No has seleccionado ningun ciclo"));
+        }
+        elseif(request()->ofertas==null){
+            return back()->with('message',__("No has seleccionado niguna oferta"));
+        }
+        else{
+
+            $offer_id=request()->ofertas;
+            $applieds = applied::where('offer_id', $offer_id)->get();
+            $pdf=PDF::loadView('PDF.alumnos', compact('applieds'));
+            return $pdf->download('Alumnos.pdf');
+        }
     }
 
     public function byCiclo($id){

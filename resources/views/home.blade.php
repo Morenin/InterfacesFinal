@@ -167,6 +167,8 @@
 </body>
 
 
+<
+<script type="text/javascript"></script>
 <!-- jQuery -->
 <script src="../public/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

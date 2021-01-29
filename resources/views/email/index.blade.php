@@ -24,9 +24,14 @@
                             <label for="email">Email</label>
                             <div class="col-md-8">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-user"></i></span>
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+                                <input id="email" name="email" type="emails" placeholder="Email Address" class="form-control">
                             </div>
                         </div>
+                        @if(Session::has('message'))
+                        <div class="alert alert-danger">
+                            {{Session::get('message')}}
+                        </div>
+                        @endif
 
                         <div class="form-group">
                         <label for="asunto">Asunto</label>
@@ -56,6 +61,11 @@
                             </div>
                         </div>
                 </form>
+                @if(Session::has('success'))
+                        <div class="alert alert-success">
+                            {{Session::get('success')}}
+                        </div>
+                        @endif
                 </div>
             </div>
         </div>

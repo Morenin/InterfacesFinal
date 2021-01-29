@@ -39,6 +39,11 @@
                                 </select>
                             </div>
 						</div>
+                        @if(Session::has('message'))
+                        <div class="alert alert-danger">
+                            {{Session::get('message')}}
+                        </div>
+                        @endif
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">

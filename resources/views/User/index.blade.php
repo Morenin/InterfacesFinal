@@ -2,17 +2,16 @@
 @section('content')
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../public/adminlte/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../../public/adminlte/plugins/fontawesome-free/css/all.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="../public/adminlte/css/adminlte.min.css">
-<!-- Google Font: Source Sans Pro -->
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-<!-- DataTables -->
-<link rel="stylesheet" href="../public/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="../public/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-<!-- Ionicons -->
-<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="../../public/adminlte/css/adminlte.min.css">
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <div class="row">
     <div class="col-sm-12">
         <div class="row justify-content-center align-items-center">
@@ -35,7 +34,7 @@
         @endif
         
             <form class="form-inline m-2">
-                <select name='active' placeholder="Buscar por nombre">
+                <select id="filtro" name='active' placeholder="Buscar por nombre">
                 <option value="">Todos</option>
                 <option value=1>Para desactivar</option>
                 <option value=0>Para activar</option>
@@ -81,8 +80,27 @@
             </tbody>
 
         </table>
-        {{ $Users->links() }}
+        
         <div class="card-footer"></div>
     </div>
-    </script>
+    {{ $Users->links() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function(){
+
+    $('#filtro').on('change', onSelectfiltro)
+})
+
+function onSelectfiltro(){
+    var tipo= $(this).val();
+    // AJAX
+    if(!tipo){
+        window.location='usuarios/2';
+    }
+    else{
+
+    window.location='usuarios/'+tipo;
+    }
+}
+</script>
     @endsection
