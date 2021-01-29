@@ -17,16 +17,7 @@
         <div class="row justify-content-center align-items-center">
             <h1 class="panel-title">Usuarios</h1>
         </div>
-        <br></br>
-        <!-- <form>
-    <select name="active">
-        <option value="">Todos</option>
-        <option value=True>Activados</option>
-        <option value=False>Desactivado</option>
-    </select>
-    <a class="btn btn-primary" type="submit">Buscar</a>
-    </form> -->
-        
+        <br></br>  
         @if($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
@@ -34,14 +25,24 @@
         @endif
         
             <form class="form-inline m-2">
-                <select id="filtro" name='active' placeholder="Buscar por nombre">
+                <select id= 'active' name='active' class='form-control'placeholder="Buscar por nombre">
                 <option value="">Todos</option>
                 <option value=1>Para desactivar</option>
                 <option value=0>Para activar</option>
                 </select>
                 <button class="btn btn-outline-success my-2 my-sm-0 m-3" type="submit">Buscar</button>
             </form>
-        
+            <!-- <label for="select-active">Estado</label>
+            <form class="form-inline m-2">
+            <select id="select-active" name="active" class="browser-default custom-select">
+                <option value="">Todos</option>
+                <option value=1 >Para desactivar</option>
+                <option value=0>Para activar</option>
+            </select>
+            </form>
+            @section('script')
+            <script src="{{asset('/public/js/user.js')}}"></script>
+            @endsection -->
         <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid"
             aria-describedby="example1_info">
             <thead>
@@ -80,27 +81,7 @@
             </tbody>
 
         </table>
-        
+        {{ $Users->links('vendor.pagination.semantic-ui') }}
         <div class="card-footer"></div>
     </div>
-    {{ $Users->links() }}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(function(){
-
-    $('#filtro').on('change', onSelectfiltro)
-})
-
-function onSelectfiltro(){
-    var tipo= $(this).val();
-    // AJAX
-    if(!tipo){
-        window.location='usuarios/2';
-    }
-    else{
-
-    window.location='usuarios/'+tipo;
-    }
-}
-</script>
     @endsection

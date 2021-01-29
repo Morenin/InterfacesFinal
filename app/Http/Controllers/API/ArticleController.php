@@ -4,9 +4,12 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\article;
+use Validator;
 
 class ArticleController extends Controller
 {
+    public $successStatus = 200;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles=article::all();
+        return response()->json(['Articulos'=>$articles->toArray()],$this->successStatus);
     }
 
     /**
@@ -35,7 +39,18 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input=$request->all();
+        $validator=Validator::make($input,[
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+            'cicle_id'=> 'required',
+        ]);
+        if($validator->fails()){
+            return response()->json(['error' => $validator->errors()],401);
+        }
+        $articles= article::create($input);
+        return response()->jsonn(['Articulo' => $articles->toArray()], $this->successStatus);
     }
 
     /**
@@ -46,7 +61,11 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $articles = article::find($id);
+            if (is_null($articles)) {
+        return response()->json(['error' => $validator->errors()], 401);
+        }
+        return response()->json(['Articulo' => $articles->toArray()], $this->successStatus);
     }
 
     /**
@@ -67,9 +86,25 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, article $articles)
     {
-        //
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+            'cicle_id'=> 'required',
+        ]);
+        if($validator->fails()){
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+        $articles->title = $input['title'];
+        $articles->description = $input['description'];
+        $articles->image = $input['image'];
+        $articles->cicle_id = $input['cicle_id'];
+        $articles->save();
+        return response()->json(['Articulos' => $articles->toArray()], $this->successStatus);
+
     }
 
     /**
@@ -78,8 +113,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(article $articles)
     {
-        //
+        $articles->delete();
+        return response()->json(['Articulo' => $articles->toArray()], $this->successStatus);
     }
 }
