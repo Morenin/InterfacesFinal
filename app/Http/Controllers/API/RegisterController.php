@@ -21,9 +21,6 @@ class RegisterController extends Controller
         'password' => 'required',
         'num_offer_applied'=>'required',
         'actived' => '0',
-        
-
-
         ]);
 
             if($validator->fails()) {
