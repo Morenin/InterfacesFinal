@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\User;
 class UserController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users=user::all();
+        return response()->json(['User'=>$users->toArray()],$this->successStatus);
     }
 
     /**

@@ -26,4 +26,5 @@ Route::middleware('auth:api')->group( function () {
     Route::resource('cicles', 'API\CicleController');
     Route::resource('offers','API\OfferController');
     Route::resource('applieds','API\AppliedController');
+    Route::resource('user','API\UserController');
 });

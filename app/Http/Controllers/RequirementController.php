@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\requirement;
 
 class RequirementController extends Controller
 {
@@ -13,7 +14,8 @@ class RequirementController extends Controller
      */
     public function index()
     {
-        //
+        $requirements = requirement::all();
+        return view('requirements.index', compact('requirement'));
     }
 
     /**
@@ -34,7 +36,12 @@ class RequirementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'description' => '',
+            'offer_id' => ''
+            ]);
+            $requirement = requirement::create($data);
+            return redirect('/requirements/' . $requirement->id);
     }
 
     /**
@@ -45,7 +52,8 @@ class RequirementController extends Controller
      */
     public function show($id)
     {
-        //
+        $requirement = requirement::find($id);
+        return view('requirements.show', compact('requirement'));
     }
 
     /**
@@ -68,7 +76,13 @@ class RequirementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = request()->validate([
+            'description' => 'Título del test',
+            'offer_id' => '0'
+            ]);
+            $requirement = requirement::find($id);
+            $requirement->update($data);
+            return redirect('/requirements/' . $requirement->id);
     }
 
     /**
@@ -79,6 +93,8 @@ class RequirementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $requirement = requirement::find($id);
+        $requirement->delete();
+        return redirect('/requirement/');
     }
 }
