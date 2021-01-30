@@ -14,6 +14,7 @@ class PostManagementTest extends TestCase
      *
      * @return void
      */
+    /** @test */
     public function a_user_requirement_be_created() {
         $response = $this->post('/users', [
         'description' => 'Título del test',
@@ -30,7 +31,7 @@ class PostManagementTest extends TestCase
         $this->withoutExceptionHandling();
         $response->assertRedirect('/requirement/' . $requirement->id);
        }
-    
+    /** @test */
     public function a_requirement_can_be_retrieved() {
         $this->withoutExceptionHandling();
         $post = factory(requirement::class)->create();
@@ -40,7 +41,7 @@ class PostManagementTest extends TestCase
         $response->assertViewIs('requirement.show');
         $response->assertViewHas('requirement', $requirement);
        }
-    
+    /** @test */
     public function a_requirement_can_be_deleted() {
         $this->withoutExceptionHandling();
         $requirement = factory(requirement::class)->create();
@@ -49,7 +50,7 @@ class PostManagementTest extends TestCase
         $this->assertCount(0, requirement::all());
         $response->assertRedirect('/requirement/');
        }   
-    
+    /** @test */
     public function post_title_is_required() {
         $response = $this->requirement('/requirement', [
             'description' => '',
@@ -58,7 +59,7 @@ class PostManagementTest extends TestCase
         $response->assertSessionHasErrors(['title']);
        }
       
-        
+    /** @test */   
     public function post_content_is_required() {
         $response = $this->requirement('/requirement', [
             'description' => '',
