@@ -23,5 +23,7 @@ Route::post('login', 'API\RegisterController@login');
 
 Route::middleware('auth:api')->group( function () {
     Route::resource('article', 'API\ArticleController');
+    Route::resource('cicles', 'API\CicleController');
+    Route::resource('offers','API\OfferController');
+    Route::resource('applieds','API\AppliedController');
 });
-Route::get('/ciclo/{id}/ofertas', 'pdfController@byCiclo');

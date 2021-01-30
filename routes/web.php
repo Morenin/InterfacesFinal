@@ -17,20 +17,19 @@ Route::get('/', function () {
     //return view('welcome');
     return view('auth.login');
 });
-Route::get('/welcome', function () {
-    return view('welcome');
-});
 Auth::routes();
-// Route::middleware('auth')->group(function() {
-//     Route::get('/welcome', 'HomeController@index')->name('welcome');
-// });
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/Usuario', 'UserController@index')->name('usuario');
-Route::resource('User','UserController');
-Route::resource('PDF','pdfController');
-Route::get('/pdfAlumnos','pdfController@index2')->name('pdfAlumnos');
-Route::post('/CrearPdf','pdfController@store2')->name('CrearPdf');
-Route::resource('email','emailController');
-Route::get('/ciclo/{id}/ofertas', 'pdfController@byCiclo');
-Route::get('/usuarios/{id}', 'UserController@filtro');
+Route::group(['middleware'=>'admin'], function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/Usuario', 'UserController@index')->name('usuario');
+    Route::resource('User','UserController');
+    Route::resource('PDF','pdfController');
+    Route::get('/pdfAlumnos','pdfController@index2')->name('pdfAlumnos');
+    Route::post('/CrearPdf','pdfController@store2')->name('CrearPdf');
+    Route::resource('email','emailController');
+    Route::get('/ciclo/{id}/ofertas', 'pdfController@byCiclo');
+    Route::get('/usuarios/{id}', 'UserController@filtro');
+    Route::get('/welcome', function () {
+        return view('welcome');
+    });
+});

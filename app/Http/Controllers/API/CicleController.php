@@ -4,9 +4,12 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\cicle;
 
 class CicleController extends Controller
 {
+
+    public $successStatus = 200;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,8 @@ class CicleController extends Controller
      */
     public function index()
     {
-        //
+        $cicles=cicle::all();
+        return response()->json(['Ciclos'=>$cicles->toArray()],$this->successStatus);
     }
 
     /**

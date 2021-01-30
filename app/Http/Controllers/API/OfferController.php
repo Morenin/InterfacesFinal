@@ -4,9 +4,12 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\offer;
 
 class OfferController extends Controller
 {
+
+    public $successStatus = 200;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,9 @@ class OfferController extends Controller
      */
     public function index()
     {
-        //
+        $offers=offer::all();
+        return response()->json(['Ofertas'=>$offers->toArray()],$this->successStatus);
+        
     }
 
     /**
@@ -24,7 +29,6 @@ class OfferController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -46,7 +50,12 @@ class OfferController extends Controller
      */
     public function show($id)
     {
-        //
+        $offers = offer::where('cicle_id',$id)->get();
+        if (sizeof($offers) == 0) {
+            return response()->json(['error' => 'No hay ofertas con ese ciclo'], 404);
+        }
+        return response()->json(['Ofertas' => $offers->toArray()], $this->successStatus);
+        
     }
 
     /**

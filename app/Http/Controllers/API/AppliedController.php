@@ -4,9 +4,12 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\applied;
 
 class AppliedController extends Controller
 {
+
+     public $successStatus = 200;
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +38,16 @@ class AppliedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input=$request->all();
+        $validator = Validator::make($input, [
+            'user_id' => 'required',
+            'offer_id' => 'required'
+        ]);
+        if($validator->fails()){
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+        $applied = applied::create($input);
+        return response()->json(['Inscrito' => $applied->toArray()], $this->successStatus);
     }
 
     /**
@@ -46,7 +58,11 @@ class AppliedController extends Controller
      */
     public function show($id)
     {
-        //
+        $applieds = applied::where('user_id',$id)->get();
+        if (sizeof($applieds) == 0) {
+            return response()->json(['error' => 'No hay ofertas con ese usuario'], 404);
+        }
+        return response()->json(['Ofertas Aplicadas' => $applieds->toArray()], $this->successStatus);
     }
 
     /**
@@ -80,6 +96,8 @@ class AppliedController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $applied=applied::find($id);
+        $applied->delete();
+        return response()->json(['Applied' => $applied->toArray()], $this->successStatus);
     }
 }
