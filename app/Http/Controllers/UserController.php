@@ -12,9 +12,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $Users = User::paginate(20);
+       $active= $request->get('active');
+       if($active!=""){
+           $Users = User::where('actived','=',"$active")->paginate(20);
+       }else{
+           $Users = User::paginate(20);
+       }
         
         return view('User.index',compact('Users'));
     }
