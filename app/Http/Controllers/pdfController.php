@@ -44,6 +44,9 @@ class pdfController extends Controller
         $añoIni=((string)$año."-09-01");
         $añoFin=((string)($año+1)."-08-31");
         $ofertas=offer::whereBetween('created_at',array($añoIni,$añoFin))->get();
+        if(sizeof($ofertas)==0){
+            return back()->with('message',__("No hay Ofertas en este año"));
+        }
         $ciclos = cicle::all();
         $pdf=PDF::loadView('PDF.ofertas',compact('ciclos','ofertas'));
         return $pdf->download('Ofertas.pdf');

@@ -21,7 +21,7 @@
                         <legend class="text-center header">Enviar Email</legend>
 
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Email (Puedes incluir varios emails si los separas con ';')</label>
                             <div class="col-md-8">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-user"></i></span>
                                 <input id="email" name="email" type="emails" placeholder="Email Address" class="form-control">

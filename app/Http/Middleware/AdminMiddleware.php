@@ -18,6 +18,9 @@ class AdminMiddleware
         if ((auth()->check() && auth()->user()->type === 'ad')){
             return $next($request);
         }
-        return redirect('/');
+        else{
+            auth()->logout();
+            return redirect('/')->with('message',__("Solo puede iniciar sesión el administrador"));
+        }
     }
 }

@@ -36,8 +36,8 @@ class emailController extends Controller
     public function store(Request $request)
     {
         $correos=request()->email;
-        if(strpos($correos,',') || strpos($correos,':')){
-            return back()->with('message',__("El caracter para separar los correos es ';', por favor asegurese de que ha introducido el correcto"));
+        if(strpos($correos,',') || strpos($correos,':') || strpos($correos,' ')){
+            return back()->with('message',__("El caracter para separar los correos es ';', por favor asegúrese de que ha introducido el correcto"));
         }else{
             $pos= strpos($correos,';');
             if ( $pos === false ){
