@@ -25,8 +25,8 @@
             <form class="form-inline m-2">
                 <select name='active' placeholder="Buscar por nombre">
                 <option value="">Todos</option>
-                <option value=1>Para desactivar</option>
-                <option value=0>Para activar</option>
+                <option value=1>Activados</option>
+                <option value=0>Desactivados</option>
                 </select>
                 <button class="btn btn-outline-success my-2 my-sm-0 m-3" type="submit">Buscar</button>
             </form>

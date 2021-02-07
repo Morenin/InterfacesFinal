@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\applied;
+use Validator;
 
 class AppliedController extends Controller
 {
@@ -96,8 +97,28 @@ class AppliedController extends Controller
      */
     public function destroy($id)
     {
-        $applied=applied::find($id);
+        
+    }
+
+    public function unapplied(Request $request){
+
+        $input=$request->all();
+        $validator = Validator::make($input, [
+            'user_id' => 'required',
+            'offer_id' => 'required'
+        ]);
+        if($validator->fails()){
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+        $offer_id = request()->offer_id;
+        $user_id = request()->user_id;
+        $applied=applied::where('user_id',$user_id)->where( 'offer_id', $offer_id);
+        $applieds=applied::where('user_id',$user_id)->where( 'offer_id', $offer_id)->get();
+        if(sizeof($applieds)==0){
+            return response()->json(['error' => 'Faltan datos'], 404);
+        }
+        
         $applied->delete();
-        return response()->json(['Applied' => $applied->toArray()], $this->successStatus);
+        return response()->json(['deleted' => $applieds->toArray()], $this->successStatus);
     }
 }

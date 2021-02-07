@@ -27,4 +27,5 @@ Route::middleware('auth:api')->group( function () {
     Route::resource('offers','API\OfferController');
     Route::resource('applieds','API\AppliedController');
     Route::resource('user','API\UserController');
+    Route::post('unapplied','API\AppliedController@unapplied');
 });
