@@ -61,11 +61,11 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        $articles = article::find($id);
-            if (is_null($articles)) {
-        return response()->json(['error' => $validator->errors()], 401);
+        $articles = article::where('cicle_id',$id)->get();
+        if (is_null($articles)) {
+            return response()->json(['error' => $validator->errors()], 401);
         }
-        return response()->json(['Articulo' => $articles->toArray()], $this->successStatus);
+        return response()->json(['Articulos' => $articles->toArray()], $this->successStatus);
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 class UserController extends Controller
 {
+    public $successStatus = 200;
     /**
      * Display a listing of the resource.
      *

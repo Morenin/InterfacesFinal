@@ -72,7 +72,6 @@ function onSelectCiclo(){
     // AJAX
     $.get('ciclo/'+cicle_id+'/ofertas', function(data) {
         var html_select='<option value="">Seleccione Oferta</option>';
-        alert(data.length);
         for(var i=0; i<data.length; ++i)
             html_select+='<option value="'+data[i].id+'">'+data[i].headline+'</option>';
         $('#select-oferta').html(html_select);
