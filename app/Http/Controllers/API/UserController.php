@@ -4,7 +4,11 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 use App\User;
+
+
 class UserController extends Controller
 {
     public $successStatus = 200;
@@ -84,10 +88,12 @@ class UserController extends Controller
     {
         //
     }
-    public function logoutApi()
+    public function logoutApi(Request $request)
     { 
-        $user = Auth::user()->token();
-        $user->revoke();
-        return 'logged out';
+        $request->user()->token()->revoke();
+        return response()->json([
+        'message' => 'Successfully logged out'
+    ]);
+            
     }
 }
