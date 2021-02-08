@@ -83,4 +83,10 @@ class UserController extends Controller
     {
         //
     }
+    public function logoutApi()
+    { 
+        $user = Auth::user()->token();
+        $user->revoke();
+        return 'logged out';
+    }
 }
